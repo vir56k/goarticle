@@ -3,6 +3,7 @@ package domain
 import (
 	"fmt"
 	"goarticle/internal/model"
+	"goarticle/internal/utils"
 	"io/ioutil"
 	"path/filepath"
 )
@@ -36,5 +37,6 @@ func GetArticle(title string) (*model.Article, error) {
 		fmt.Println(err)
 		return nil, err
 	}
-	return &model.Article{Title: title, Body: string(data)}, nil
+	html := utils.ParseMarkdownToHtml(data)
+	return &model.Article{Title: title, Body: html}, nil
 }

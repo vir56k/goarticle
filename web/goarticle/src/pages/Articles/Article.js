@@ -46,7 +46,7 @@ function Page() {
         <div className="pageConent">
           <div className='ariticle'>
               <h1 className='title'>{title}</h1>
-              <article className='body'>{body}</article>
+              <article className='body' dangerouslySetInnerHTML={{__html:body }}></article>
           </div>
         </div>
       </div>
