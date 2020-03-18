@@ -12,6 +12,7 @@ import {
 import Welcome from '../../pages/Welcome/Welcome.js';
 import ArticleList from '../../pages/Articles/ArticleList.js';
 import Article from '../../pages/Articles/Article.js';
+import AriticleBrowser from '../../pages/Articles/AriticleBrowser.js';
 
 function Home() {
   let { path, url } = useRouteMatch();
@@ -22,7 +23,10 @@ function Home() {
       <Header/>
       <Switch>
        <Route exact path={path}>
-         <ArticleList />
+         <AriticleBrowser />
+       </Route>
+       <Route path={`${path}browser`}>
+         <AriticleBrowser />
        </Route>
        <Route path={`${path}article/:Title`}>
          <Article />

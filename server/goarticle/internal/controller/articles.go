@@ -23,3 +23,12 @@ func GetArticle(ctx iris.Context) {
 	}
 	ResponseJson(ctx, article)
 }
+
+func GetArticleNameList(ctx iris.Context) {
+	articles, err := domain.ArticleNameList()
+	if err != nil {
+		ResponseErr(ctx, err)
+		return
+	}
+	ResponseJson(ctx, articles)
+}

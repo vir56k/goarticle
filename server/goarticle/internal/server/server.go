@@ -26,6 +26,7 @@ func Run() {
 	api := app.Party("/api",crs).AllowMethods(iris.MethodOptions)
 	{
 		api.Handle("GET", "/articles", controller.ListArticles)
+		api.Handle("GET", "/article/namelist", controller.GetArticleNameList)
 		api.Handle("GET", "/article/{title:string}", controller.GetArticle)
 	}
 	// 其他
