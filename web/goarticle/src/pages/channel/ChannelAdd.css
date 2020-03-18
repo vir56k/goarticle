@@ -1,0 +1,13 @@
+.myform_div{
+  padding-top: 32px;
+  width: 400px;
+  /* background:#000; */
+}
+
+.cancel{
+  margin-left: 0px;
+}
+
+.btnOK{
+  margin-left: 16px;
+}

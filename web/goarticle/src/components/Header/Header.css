@@ -1,0 +1,66 @@
+.app-header {
+  background-color: #202329;
+  min-height: 66px;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:  flex-start;
+  font-size: calc(8px + 2vmin);
+  color: white;
+  padding-right: 16px;
+}
+
+.app-header .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 5vmin;
+}
+
+
+.app-header .App-sub-title{
+  padding-left:8px;
+  padding-top: 8px;
+  font-size: 8px;
+}
+
+.app-header .app-header-center-item {
+  flex:1;
+}
+
+.app-header .app-header-title{
+  color:white;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-header .ant-dropdown-link{
+  margin-right: 16px;
+}
+
+.app-header .ic-user {
+  width: 24px;
+  height: 24px;
+  margin-right:8px;
+}
+
+.app-header .btn_logout {
+  margin-left: 5px;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.app-header .txt_username {
+  margin-left: 5px;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.app-header .header_area_user {
+  padding-right: 20px;
+}
