@@ -1,0 +1,34 @@
+.ariticleBrowser
+{
+  margin:0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.ariticleBrowser .left{
+  padding: 10px;
+  width:320px;/*固定宽度*/
+  /* background-color: #F7F7F7; */
+  font-size: calc(10px + 1vmin);
+  background-color: #dedede;
+  color:gray;
+  overflow-y:visible
+}
+
+.ariticleBrowser .left a{
+  color:gray;
+}
+
+.ariticleBrowser ul,li{ margin:0; padding:8px; list-style:none; }
+.ariticleBrowser li{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.ariticleBrowser .right {
+  flex:1;/*这里设置为占比1，填充满剩余空间*/
+  min-height: 90vh;
+  padding: 10px;
+}

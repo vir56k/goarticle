@@ -54,6 +54,11 @@ class Header extends Component {
     this.props.history.push("/login");
   }
 
+  handleEdit=()=>{
+    this.props.history.push("/article/edit");
+  }
+
+
   render() {
     const menu = (
       <Menu onClick={this.handleMenuClick}>
@@ -70,7 +75,7 @@ class Header extends Component {
         <div className="app-header-center-item"></div>
 
 
-        <Button type="primary"  shape="round">写文章</Button>
+        <Button type="primary"  shape="round" onClick={this.handleEdit}>写文章</Button>
       </header>
     );
   }

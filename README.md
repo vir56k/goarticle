@@ -22,6 +22,7 @@
 - React 开发实现前端分离
 - React Hook 简化状态管理
 - React Router 路由
+- for-editor 作为 markdown 编辑器
 - 多环境构建（开发，测试，线上）
 
 # 整体结构
@@ -36,3 +37,4 @@ Go 工程使用 "go module" 管理依赖。使用 Iris 作为web服务框架。
 # 关于
 欢迎关注我的Github，网址: https://github.com/vir56k
 欢迎关注我的技术blog，网址：https://www.jianshu.com/u/b05ccb1463c2
+markdown 编辑器 for-editor 地址：https://github.com/kkfor/for-editor

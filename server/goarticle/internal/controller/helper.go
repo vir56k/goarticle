@@ -5,6 +5,11 @@ import (
 	"goarticle/internal/model"
 )
 
+func ResponseSuccess(ctx iris.Context) {
+	ctx.JSON(model.Msg{Code: 200, Message: "", Data: nil})
+}
+
+
 
 func ResponseJson(ctx iris.Context, obj interface{}) {
 	ctx.JSON(model.Msg{Code: 200, Message: "", Data: obj})
