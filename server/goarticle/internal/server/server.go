@@ -2,11 +2,13 @@ package server
 
 import (
 	"fmt"
+	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/logger"
 	"github.com/kataras/iris/v12/middleware/recover"
+	"goarticle/internal/config"
 	"goarticle/internal/controller"
-	"github.com/iris-contrib/middleware/cors"
+	"goarticle/internal/utils"
 )
 
 func Run() {
@@ -16,14 +18,15 @@ func Run() {
 	app.Use(logger.New())
 	app.Use(recover.New())
 
+	iniLog(app)// 初始化 日志
+
 	crs := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
 		AllowCredentials: true,
 	})
 
-
 	// api
-	api := app.Party("/api",crs).AllowMethods(iris.MethodOptions)
+	api := app.Party("/api", crs).AllowMethods(iris.MethodOptions)
 	{
 		api.Handle("GET", "/articles", controller.ListArticles)
 		api.Handle("GET", "/article/namelist", controller.GetArticleNameList)
@@ -40,4 +43,14 @@ func Run() {
 
 	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
 
+}
+
+func iniLog(app *iris.Application) {
+	// 处理是否写入到文件
+	cfg := config.Get()
+	if cfg.LogToFile {
+		logFile := utils.OpenLogFile()
+		defer logFile.Close()
+		app.Logger().SetOutput(logFile)
+	}
 }

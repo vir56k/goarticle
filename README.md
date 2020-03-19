@@ -12,11 +12,7 @@
 - 分组路由
 - CORS 跨域请求
 - 使用 blackfriday 将 markdown 格式文本转成HTML
-- 中间件实现授权访问
-- redis 管理登陆会话
-- 日志错误管理
-- 图片上传，google.uuid 生成文件名
-- 使用 Go Module 方式开发
+- 使用 Go Module 方式管理依赖
 
 前端
 - React 开发实现前端分离

@@ -29,6 +29,9 @@ function Home() {
        <Route path={`${path}browser`}>
          <AriticleBrowser />
        </Route>
+       <Route path={`${path}article/list`}>
+         <ArticleList />
+       </Route>
        <Route path={`${path}article/edit`}>
          <EditAriticle />
        </Route>
