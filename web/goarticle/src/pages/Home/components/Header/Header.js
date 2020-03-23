@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom";
 import './Header.css';
-import logo from '../../asset/svg/logo.svg';
-import ic_user from '../../asset/images/ic_user.png';
+import logo from '../../../../asset/svg/logo.svg';
+import ic_user from '../../../../asset/images/ic_user.png';
 import service from './Service.js'
 import { message,Button,Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import Auth from '../../domain/Auth.js';
+import Auth from '../../../../domain/Auth.js';
 
 
 class Header extends Component {

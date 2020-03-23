@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Welcome.css';
 import { message } from 'antd';
-import Header from '../../components/Header/Header.js';
 import {
   Link
 } from "react-router-dom";

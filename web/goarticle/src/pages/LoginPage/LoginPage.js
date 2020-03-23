@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Login.css';
+import './LoginPage.css';
 import service from './Service.js'
 import ic_login_user from '../../asset/images/ic_login_user.png';
 import ic_login_code from '../../asset/images/ic_login_code.png';
@@ -44,22 +44,17 @@ class Login extends Component {
     //   message.error('请输入密码');
     //   return;
     // }
-    // service.login(username,verifycode).then((res)=>{
-    //   let { data } = res;
-    //   if(data.code === 200){
-    //     global.storage.setItem("Authorization",data.data.token);
-    //     this.onLoginSuccess();
-    //   }else{
-    //     message.error(''+data.message);
-    //   }
-    // }).catch((err)=>{
-    //   message.error(''+err);
-    // });
+    
      this.onLoginSuccess();
   }
 
   onLoginSuccess =()=>{
-    this.props.history.push("/home");
+    let history = this.props.history;
+    let location = this.props.location;
+    let { from } = location.state || { from: { pathname: "/manage" } };
+    console.log("from:"+from.pathname);
+
+    this.props.history.push(from.pathname);
   }
 
   render() {

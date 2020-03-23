@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom";
 import './Header.css';
-import logo from '../../asset/svg/logo.svg';
-import ic_user from '../../asset/images/ic_user.png';
+import logo from '../../../../asset/svg/logo.svg';
+import ic_user from '../../../../asset/images/ic_user.png';
 import service from './Service.js'
 import { message,Button,Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import Auth from '../../domain/Auth.js';
-
+import Auth from '../../../../domain/Auth.js';
 
 class Header extends Component {
 
@@ -75,19 +74,20 @@ class Header extends Component {
         <a className="app-header-title" href="/home">{service.title}</a>
         <span className="App-sub-title">{service.sub_title}</span>
         <div className="app-header-center-item"></div>
+          <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                  <img className="ic-user" src={ic_user} alt="" />
+                  <DownOutlined />
+                </a>
+            </Dropdown>
 
-        <Button type="primary"  shape="round" onClick={this.handleEdit}>写文章</Button>
       </header>
     );
   }
 }
 
-// <Dropdown overlay={menu}>
-//       <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-//         <img className="ic-user" src={ic_user} alt="" />
-//         <DownOutlined />
-//       </a>
-//   </Dropdown>
+
+
 
 
 export default withRouter(Header);

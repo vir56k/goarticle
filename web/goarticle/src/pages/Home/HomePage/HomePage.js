@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './Home.css';
-import Header from '../../components/Header/Header.js';
 import {
   Switch,
   Route,
@@ -8,12 +6,12 @@ import {
   useParams,
   useRouteMatch
 } from "react-router-dom";
-
-import Welcome from '../../pages/Welcome/Welcome.js';
-import ArticleList from '../../pages/Articles/ArticleList.js';
-import Article from '../../pages/Articles/Article.js';
-import AriticleBrowser from '../../pages/Articles/AriticleBrowser.js';
-import EditAriticle from '../../pages/Articles/EditAriticle.js';
+import Header from '../components/Header/Header.js';
+import './HomePage.css';
+import Welcome from '../Welcome/Welcome.js';
+import ArticleList from '../Articles/ArticleList.js';
+import Article from '../Articles/Article.js';
+import AriticleBrowser from '../Articles/AriticleBrowser.js';
 
 function Home() {
   let { path, url } = useRouteMatch();
@@ -31,9 +29,6 @@ function Home() {
        </Route>
        <Route path={`${path}article/list`}>
          <ArticleList />
-       </Route>
-       <Route path={`${path}article/edit`}>
-         <EditAriticle />
        </Route>
        <Route path={`${path}article/:Title`}>
          <Article />

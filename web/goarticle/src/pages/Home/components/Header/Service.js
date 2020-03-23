@@ -1,4 +1,4 @@
-import HTTP from '../../common/HttpUtil'
+import HTTP from '../../../../common/HttpUtil'
 
 const URL_USER_SELF = "/users/self";//用户信息
 

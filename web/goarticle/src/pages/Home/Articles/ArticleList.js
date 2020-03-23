@@ -3,7 +3,6 @@ import './ArticleList.css';
 import { message } from 'antd';
 import service from './service.js';
 
-import Header from '../../components/Header/Header.js';
 import {
   Link
 } from "react-router-dom";

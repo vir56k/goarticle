@@ -31,8 +31,12 @@ func Run() {
 		api.Handle("GET", "/articles", controller.ListArticles)
 		api.Handle("GET", "/article/namelist", controller.GetArticleNameList)
 		api.Handle("GET", "/article/{title:string}", controller.GetArticleHtml)
-		api.Handle("GET", "/article/origin/{title:string}", controller.GetArticleString)
-		api.Handle("POST", "/article/save", controller.SaveArticle)
+
+		manage := api.Party("/manage")
+		manage.Handle("GET", "/article/origin/{title:string}", controller.GetArticleString)
+		manage.Handle("POST", "/article/save", controller.SaveArticle)
+
+
 	}
 	// 其他
 	app.Handle("GET", "/", func(ctx iris.Context) {
