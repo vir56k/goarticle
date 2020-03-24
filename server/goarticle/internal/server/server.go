@@ -17,25 +17,28 @@ func Run() {
 	app := iris.New()
 	app.Use(logger.New())
 	app.Use(recover.New())
+	// 授权相关的中间件
+	authMiddleware := controller.GetAuthMiddleware()
 
-	iniLog(app)// 初始化 日志
+	iniLog(app) // 初始化 日志
 
 	crs := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
 		AllowCredentials: true,
+		AllowedHeaders:   []string{"Authorization"},
 	})
 
 	// api
 	api := app.Party("/api", crs).AllowMethods(iris.MethodOptions)
 	{
 		api.Handle("GET", "/articles", controller.ListArticles)
-		api.Handle("GET", "/article/namelist", controller.GetArticleNameList)
 		api.Handle("GET", "/article/{title:string}", controller.GetArticleHtml)
+		api.Handle("POST", "/login", controller.GetTokenHandler)
 
-		manage := api.Party("/manage")
+		manage := api.Party("/manage", authMiddleware.Serve)
+		manage.Handle("GET", "/article/namelist", controller.GetArticleNameList)
 		manage.Handle("GET", "/article/origin/{title:string}", controller.GetArticleString)
 		manage.Handle("POST", "/article/save", controller.SaveArticle)
-
 
 	}
 	// 其他

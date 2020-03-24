@@ -27,3 +27,9 @@ func ResponseErr2(ctx iris.Context, code int, err error) {
 }
 
 
+func ResponseErr3(ctx iris.Context,code int, err string) {
+	ctx.JSON(model.Msg{Code: code, Message: err, Data: nil})
+}
+
+
+

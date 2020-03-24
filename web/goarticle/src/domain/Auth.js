@@ -1,5 +1,17 @@
 
+import HTTP from '../common/HttpUtil'
 
+const URL_LOGIN = "/api/login";
+
+class Service {
+
+  login(name, password){
+    return HTTP.post(HTTP.getHostURL(URL_LOGIN),{name, password});
+  }
+
+}
+
+let service = new Service();
 
 const Auth = {
   isAuthenticated(){
@@ -11,22 +23,22 @@ const Auth = {
       cb(undefined,new Error("请输入账户密码"))
       return;
     }
-    // service.login(username,verifycode).then((res)=>{
-    //   let { data } = res;
-    //   if(data.code === 200){
-    //     global.storage.setItem("Authorization",data.data.token);
-    //     this.onLoginSuccess();
-    //   }else{
-    //     message.error(''+data.message);
-    //   }
-    // }).catch((err)=>{
-    //   message.error(''+err);
-    // });
-    let token = "TEST"
-    global.storage.setItem("Authorization",''+token);
-      setTimeout(()=>{
-        cb(token,undefined);
-      }, 100);
+    service.login(name,password).then((res)=>{
+      let { Code,Data,Message } = res.data;
+      let { token } = Data;
+      if(Code === 200){
+        console.log("## login code="+Code);
+        global.storage.setItem("Authorization",''+token);
+          setTimeout(()=>{
+            cb(token,undefined);
+          }, 100);
+      }else{
+        cb(undefined,''+Message);
+      }
+    }).catch((err)=>{
+      console.log("## login err="+err);
+      cb(undefined,''+err);
+    });
   },
   signout(cb){
     global.storage.removeItem('Authorization');

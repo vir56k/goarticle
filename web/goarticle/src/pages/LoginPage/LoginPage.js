@@ -5,6 +5,7 @@ import ic_login_user from '../../asset/images/ic_login_user.png';
 import ic_login_code from '../../asset/images/ic_login_code.png';
 import {withRouter} from "react-router-dom";
 import { message } from 'antd';
+import Auth from '../../domain/Auth.js';
 
 class Login extends Component {
 
@@ -12,43 +13,28 @@ class Login extends Component {
 
   }
 
-  handleGetVerifyCode = ()=>{
-    var username = this.refs.u_name.value;
-    if(!username){
+  handleLoginClick =()=> {
+    var name = this.refs.u_name.value;
+    var password = this.refs.u_password.value;
+    if(!name){
       message.error('请输入用户名');
       return;
     }
-    service.getVerifyCode(username).then((res)=>{
-      let { data } = res;
-      if(data.resultCode === 200){
-        this.GetVerifyCodeSuccess();
-      }else{
-        message.error(''+res.message);
+    if(!password){
+      message.error('请输入密码');
+      return;
+    }
+    Auth.authenticate(name,password,(token,err)=>{
+      if(err){
+        message.error(err);
+        return;
       }
-    }).catch((err)=>{
-      message.error(''+err);
-    });
-  }
-
-  GetVerifyCodeSuccess = ()=>{
-  }
-
-  handleLoginClick =()=> {
-    var username = this.refs.u_name.value;
-    var verifycode = this.refs.u_password.value;
-    // if(!username){
-    //   message.error('请输入用户名');
-    //   return;
-    // }
-    // if(!verifycode){
-    //   message.error('请输入密码');
-    //   return;
-    // }
-    
-     this.onLoginSuccess();
+      this.onLoginSuccess();
+    })
   }
 
   onLoginSuccess =()=>{
+    console.log("## onLoginSuccess");
     let history = this.props.history;
     let location = this.props.location;
     let { from } = location.state || { from: { pathname: "/manage" } };

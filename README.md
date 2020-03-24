@@ -8,19 +8,20 @@
 
 # 技术栈
 后端（服务端）
-- 采用 go iris 框架作为 web服务
-- 分组路由
-- CORS 跨域请求
-- 使用 blackfriday 将 markdown 格式文本转成HTML
 - 使用 Go Module 方式管理依赖
+- 采用 go iris 框架作为 web服务
+- iris 分组路由
+- CORS 处理跨域请求
+- 使用 blackfriday 将 markdown 格式文本转成HTML
 - 日志错误管理：日志支持写入到物理文件
 
 前端
 - React 开发实现前端分离
 - React Hook 简化状态管理
-- React Router 路由
+- React Router 路由 V4.0
 - for-editor 作为 markdown 编辑器
 - 多环境构建（开发，测试，线上）
+- 支持基于 token 的登录，退出登录功能
 
 # 整体结构
 采用“前后端分离”的结构：
