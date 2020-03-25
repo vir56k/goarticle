@@ -16,7 +16,7 @@ let service = new Service();
 const Auth = {
   isAuthenticated(){
     let token = global.storage.getItem("Authorization");
-    return token && token !== '';
+    return ! ( !token || token === '' || token === null);
   },
   authenticate(name,password,cb){
     if(!name || name==='' || !password || password===''){

@@ -31,10 +31,15 @@ func Run() {
 	// api
 	api := app.Party("/api", crs).AllowMethods(iris.MethodOptions)
 	{
-		api.Handle("GET", "/articles", controller.ListArticles)
-		api.Handle("GET", "/article/{title:string}", controller.GetArticleHtml)
+		// 授权相关
 		api.Handle("POST", "/login", controller.GetTokenHandler)
 
+		// 可公开访问的
+		api.Handle("GET", "/articles", controller.ListArticles)
+		api.Handle("GET", "/articles/namelist", controller.GetArticleNameList)
+		api.Handle("GET", "/article/{title:string}", controller.GetArticleHtml)
+
+		// manager 下的，需要 身份验证
 		manage := api.Party("/manage", authMiddleware.Serve)
 		manage.Handle("GET", "/article/namelist", controller.GetArticleNameList)
 		manage.Handle("GET", "/article/origin/{title:string}", controller.GetArticleString)
