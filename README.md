@@ -37,8 +37,8 @@ Go 工程使用 "go module" 管理依赖。使用 Iris 作为web服务框架。
 
 
 # 关于
-欢迎关注我的Github，网址: https://github.com/vir56k
-
-欢迎关注我的技术blog，网址：https://www.jianshu.com/u/b05ccb1463c2
-
-markdown 编辑器 for-editor 地址：https://github.com/kkfor/for-editor
+- 欢迎关注我的Github，网址: https://github.com/vir56k
+- 欢迎关注我的技术blog，网址：https://www.jianshu.com/u/b05ccb1463c2
+- markdown 编辑器 for-editor 地址：https://github.com/kkfor/for-editor
+- MetaWeblog协议资料，请阅读:
+https://github.com/vir56k/goarticle/blob/master/server/goarticle/MetaWeblog%E5%8D%8F%E8%AE%AE%E8%B5%84%E6%96%99.md
