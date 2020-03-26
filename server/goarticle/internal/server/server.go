@@ -59,7 +59,7 @@ func Run() {
 
 func iniLog(app *iris.Application) {
 	// 处理是否写入到文件
-	cfg := config.Get()
+	cfg := config.GetBuildConfig()
 	if cfg.LogToFile {
 		logFile := utils.OpenLogFile()
 		defer logFile.Close()

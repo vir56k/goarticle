@@ -4,8 +4,13 @@ github.com/BurntSushi/toml
 github.com/CloudyKit/fastprinter
 # github.com/CloudyKit/jet/v3 v3.0.0
 github.com/CloudyKit/jet/v3
+# github.com/PuerkitoBio/goquery v1.5.1
+## explicit
+github.com/PuerkitoBio/goquery
 # github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398
 github.com/Shopify/goreferrer
+# github.com/andybalholm/cascadia v1.1.0
+github.com/andybalholm/cascadia
 # github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible
 github.com/aymerick/raymond
 github.com/aymerick/raymond/ast
@@ -88,7 +93,7 @@ github.com/shurcooL/sanitized_anchor_name
 # golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert
-# golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553
+# golang.org/x/net v0.0.0-20200202094626-16171245cfb2
 golang.org/x/net/html
 golang.org/x/net/html/atom
 golang.org/x/net/idna

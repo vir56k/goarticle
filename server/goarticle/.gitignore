@@ -20,3 +20,5 @@ vendor/
 /.idea/
 
 LOG*.txt
+
+./config.json

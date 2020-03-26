@@ -1,13 +1,13 @@
 package config
 
 
-type Config struct {
+type BuildConfig struct {
 	LogToFile bool
 }
 
-func  Get() Config{
+func  GetBuildConfig() BuildConfig{
 	const logToFile = false  // 是否写入日志到文件
 
-	c := Config{ LogToFile:logToFile }
+	c := BuildConfig{ LogToFile:logToFile }
 	return c
 }
