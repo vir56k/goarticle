@@ -21,4 +21,5 @@ vendor/
 
 LOG*.txt
 
+config.json
 ./config.json
