@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './LoginPage.css';
-import service from './Service.js'
 import ic_login_user from '../../asset/images/ic_login_user.png';
 import ic_login_code from '../../asset/images/ic_login_code.png';
 import {withRouter} from "react-router-dom";
@@ -52,7 +51,7 @@ class Login extends Component {
               <div className="icon">
                 <img src={ic_login_user} alt="" />
               </div>
-              <input ref="u_name" name="name" type="text" placeholder="请输入用户名" value='zhangyunfei'/>
+              <input ref="u_name" name="name" type="text" placeholder="请输入用户名" />
               </div>
             <div  className="row">
               <div className="icon">

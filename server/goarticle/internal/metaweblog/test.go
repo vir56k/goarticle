@@ -8,12 +8,8 @@ import (
 func Test() {
 	fmt.Println("on metaweblog Test Start ***********")
 
-	c, err := config.GetBlogConfig()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	account := Account{UserName:c.Cnblog.UserName,Password:c.Cnblog.Password}
+	c := config.GetBlogConfig()
+	account := Account{UserName: c.UserName, Password: c.Password}
 	userInfo := GetUsersBlogs(account)
 	fmt.Println(userInfo)
 

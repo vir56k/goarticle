@@ -2,8 +2,9 @@ package controller
 
 import (
 	"fmt"
-	"github.com/kataras/iris/v12"
 	"github.com/iris-contrib/middleware/jwt"
+	"github.com/kataras/iris/v12"
+	"goarticle/internal/domain"
 )
 
 type TokenJson map[string]string
@@ -11,25 +12,28 @@ type TokenJson map[string]string
 func GetTokenHandler(ctx iris.Context) {
 	name := ctx.URLParam("name")
 	password := ctx.URLParam("password")
-	if len(name) == 0{
+	if len(name) == 0 {
 		name = ctx.FormValue("name")
 	}
 	if len(password) == 0 {
 		password = ctx.FormValue("password")
 	}
-	fmt.Println(name,password)
+	fmt.Println("GetTokenHandler args:", name, password)
 	if len(name) == 0 {
-		fmt.Println("奇怪",name,len(name))
-		ResponseErr3(ctx,509,"请输入用户名")
+		fmt.Println("奇怪", name, len(name))
+		ResponseErr3(ctx, 509, "请输入用户名")
 		return
 	}
 	if len(password) == 0 {
-		ResponseErr3(ctx,509,"请输入密码")
+		ResponseErr3(ctx, 509, "请输入密码")
 		return
 	}
-
+	if u := domain.GetUserByNameAndPwd(name, password); u.ID == 0 {
+		ResponseErr3(ctx, 501, "账户名密码错误")
+		return
+	}
 	token := jwt.NewTokenWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		""+name: ""+password,
+		"" + name: "" + password,
 	})
 
 	// Sign and get the complete encoded token as a string using the secret
@@ -66,7 +70,7 @@ func GetAuthMiddleware() *jwt.Middleware {
 
 /**
 获得 token 的验证器
- */
+*/
 func myAuthExtractor(ctx iris.Context) (string, error) {
 	authHeader := ctx.GetHeader("Authorization")
 	if authHeader == "" {

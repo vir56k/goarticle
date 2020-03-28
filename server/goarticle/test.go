@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"goarticle/internal/metaweblog"
+	"goarticle/internal/domain"
 )
 
 func main() {
 	fmt.Println("on test")
 
-	metaweblog.Test()
+	//metaweblog.Test()
+	domain.Test()
 
 	fmt.Println("done")
 

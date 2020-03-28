@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	_ "goarticle/internal/domain"
 	"goarticle/internal/server"
 )
 

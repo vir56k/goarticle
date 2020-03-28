@@ -25,9 +25,9 @@ const Auth = {
     }
     service.login(name,password).then((res)=>{
       let { Code,Data,Message } = res.data;
-      let { token } = Data;
       if(Code === 200){
         console.log("## login code="+Code);
+        let { token } = Data;
         global.storage.setItem("Authorization",''+token);
           setTimeout(()=>{
             cb(token,undefined);

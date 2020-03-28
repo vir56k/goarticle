@@ -18,6 +18,8 @@ vendor/
 .idea/
 .idea/*
 /.idea/
+/.DS_Store
+.DS_Store
 
 LOG*.txt
 
