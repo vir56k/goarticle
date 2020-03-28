@@ -82,7 +82,7 @@ func parserUserInfo(xmlStr string) *UserInfo {
 /**
 xpath 方式读取解析
 */
-func ParserUserInfo2(r io.Reader) *UserInfo {
+func parserUserInfo2(r io.Reader) UserInfo {
 	doc, err := goquery.NewDocumentFromReader(r)
 	if err != nil {
 		log.Fatal(err)
@@ -91,7 +91,7 @@ func ParserUserInfo2(r io.Reader) *UserInfo {
 	doc.Find("member").Each(func(i int, s *goquery.Selection) {
 		k := s.Find("name").Text()
 		v := s.Find("value>string").Text()
-		fmt.Println(k, "=", v)
+		//fmt.Println(k, "=", v)
 		if k == "blogName" {
 			u.BlogName = v
 		}
@@ -102,5 +102,53 @@ func ParserUserInfo2(r io.Reader) *UserInfo {
 			u.Url = v
 		}
 	})
+	return u
+}
+
+/**
+消息
+ */
+const bodyGetUsersBlogs = `<?xml version="1.0"?>
+<methodCall>
+  <methodName>blogger.getUsersBlogs</methodName>
+  <params>
+    <param>
+        <value><string></string></value>
+    </param>
+    <param>
+        <value><string>{userName}</string></value>
+    </param>
+    <param>
+        <value><string>{password}</string></value>
+    </param>
+  </params>
+</methodCall>
+`
+
+/**
+构建消息
+ */
+func buildBodyGetUsersBlogs(account Account) string {
+	bodyStr := strings.Replace(bodyGetUsersBlogs, "{userName}", account.UserName, -1)
+	bodyStr = strings.Replace(bodyStr, "{password}", account.Password, -1)
+	return bodyStr
+}
+
+/**
+获得 博客信息
+ */
+func GetUsersBlogs(account Account) *UserInfo {
+	bodyStr := buildBodyGetUsersBlogs(account)
+
+	entity, err := post(account, bodyStr, func(r io.Reader) interface{} {
+		return parserUserInfo2(r)
+	})
+	if err != nil {
+		return nil
+	}
+	u, ok := entity.(UserInfo)
+	if !ok {
+		return nil
+	}
 	return &u
 }

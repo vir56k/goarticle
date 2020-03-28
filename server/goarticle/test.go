@@ -8,7 +8,7 @@ import (
 func main() {
 	fmt.Println("on test")
 
-	metaweblog.Post()
+	metaweblog.Test()
 
 	fmt.Println("done")
 
