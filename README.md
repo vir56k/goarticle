@@ -18,6 +18,8 @@
 - 本地化配置文件，以 JSON格式操作配置文件 config.js
 - 使用 XML-RPC 的 MetaWeblog 协议接口，实现和博客园文章同步
 - 使用 goquery 框架，以 xpath 方式解析 xml
+- 使用 mysql数据库 存储用户信息
+- 使用 gorm 作为 ORM 框架
 
 前端
 - React 开发实现前端分离
