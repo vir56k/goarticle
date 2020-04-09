@@ -20,9 +20,13 @@ export default function ArticleView({Title}) {
           message.error(Message);
           return;
         }
-        let {Title,Body} = Data;
-        setTitle(Title);
-        setBody(Body);
+        if(!Data.article){
+          message.error("文章信息获取失败");
+          return
+        }
+        let {title,body} = Data.article;
+        setTitle(title);
+        setBody(body);
     }).catch((err)=>{
         message.error(err+'');
       }

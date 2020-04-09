@@ -55,12 +55,12 @@ function Left(){
 
 function TheList({datalist}){
   const theItems = datalist.map((item,i)=>{
-    let { ID,Title,Body,Url } = item;
-    Url = "/browser/"+Title;
+    let { ID,title,body,Url } = item;
+    Url = "/browser/"+title;
     return(
       <li>
         <Link to={Url}>
-            {Title}
+            {title}
         </Link>
       </li>
     );

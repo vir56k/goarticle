@@ -1,9 +1,9 @@
 import HTTP from '../../common/HttpUtil'
 
 
-const URL_ARTICLE_ORIGIN = "api/manage/article/origin";//获得文章信息，文章内容是 原始字符
-const URL_ARTICLE_NAMES = "api/manage/article/namelist";
-const URL_ARTICLE_SAVE = "api/manage/article/save";
+const URL_ARTICLE_ORIGIN = "api/protected/article/origin";//获得文章信息，文章内容是 原始字符
+const URL_ARTICLE_NAMES = "api/protected/articles/namelist";
+const URL_ARTICLE_SAVE = "api/protected/article/save";
 
 
 var service = {

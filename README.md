@@ -44,3 +44,7 @@ Go 工程使用 "go module" 管理依赖。使用 Iris 作为web服务框架。
 - markdown 编辑器 for-editor 地址：https://github.com/kkfor/for-editor
 - MetaWeblog协议资料，请阅读:
 https://github.com/vir56k/goarticle/blob/master/server/goarticle/MetaWeblog%E5%8D%8F%E8%AE%AE%E8%B5%84%E6%96%99.md
+
+- Go 网址资料： http://docscn.studygolang.com/doc/
+- Go 中文文档:  https://studygolang.com/pkgdoc
+- Go ORM 文件： http://gorm.book.jasperxu.com/

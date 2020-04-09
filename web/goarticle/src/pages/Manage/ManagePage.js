@@ -59,12 +59,12 @@ function Left(){
 
 function TheList({datalist}){
   const theItems = datalist.map((item,i)=>{
-    let { ID,Title,Body,Url } = item;
-    Url = "/manage/edit/"+Title;
+    let { ID,title,body,Url } = item;
+    Url = "/manage/edit/"+title;
     return(
       <li>
         <Link to={Url}>
-            {Title}
+            {title}
         </Link>
       </li>
     );
@@ -93,8 +93,12 @@ function Child() {
             message.error(Message);
             return;
           }
-          let {Title,Body} = Data;
-          setVal(Body);
+          if(!Data.article){
+            message.error("读取文章失败");
+            return;
+          }
+          let {title,body} = Data.article;
+          setVal(body);
       }).catch((err)=>{
           message.error(err+'');
         }
