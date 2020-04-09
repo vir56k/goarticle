@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './LoginPage.css';
 import ic_login_user from '../../asset/images/ic_login_user.png';
 import ic_login_code from '../../asset/images/ic_login_code.png';
-import {withRouter} from "react-router-dom";
-import { message } from 'antd';
+import {withRouter,Link} from "react-router-dom";
+import { message,Button } from 'antd';
 import Auth from '../../domain/Auth.js';
 
 class Login extends Component {
@@ -44,7 +44,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login_container1">
+      <div className="login_page">
           <div className="login_form">
             <h3 className="login_title">用户登录</h3>
             <div className="row">
@@ -60,7 +60,14 @@ class Login extends Component {
               <input ref="u_password" name="password" type="password" placeholder="请输入密码"/>
                 </div>
             <div className="row">
-              <button onClick={this.handleLoginClick} className="button_submit" id="btn_submit" type="button">登录</button>
+              <button onClick={this.handleLoginClick} id="btn_submit" type="button">登录</button>
+            </div>
+            <div className="row">
+              <Link to="/signup">
+                <Button type="link" className="signup">
+                    注册
+                </Button>
+              </Link>
             </div>
           </div>
       </div>

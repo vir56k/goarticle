@@ -39,6 +39,7 @@ func Run() {
 	{
 		// 授权相关
 		api.Handle("POST", "/login", auth.AuthHandler)
+		api.Handle("POST", "/signup", auth.SignupHandler)
 
 		// 可公开访问的
 		api.Handle("GET", "/articles", public.ListArticles)

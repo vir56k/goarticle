@@ -7,6 +7,8 @@ import setup from './common/setup.js';
 import LoginPage from './pages/LoginPage/LoginPage.js';
 import HomePage from './pages/Home/HomePage/HomePage.js';
 import ManagePage from './pages/Manage/ManagePage.js';
+import SignupPage from './pages/SignupPage/SignupPage.js';
+
 
 //国际化
 import { ConfigProvider , message} from 'antd';
@@ -35,6 +37,9 @@ export default function App() {
               </Route>
               <Route path="/login">
                 <LoginPage />
+              </Route>
+              <Route path="/signup">
+                <SignupPage />
               </Route>
               <PrivateRoute path="/manage">
                 <ManagePage />

@@ -1,31 +1,25 @@
-.login_container1 {
+.login_page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.login_container1 .login_form{
-  padding-top:180px;
-  font-size: calc(10px + 2vmin);
-}
-
-
-.login_container1 .row{
-  margin-top: 14px;
-  display:flex;
   flex-direction: row;
-  justify-items: center;
+  align-items: left;
   justify-content: center;
 }
 
 
-.login_container1 .row input[type=text],input[type=password]{
+.login_page .login_form{
+  padding-top:180px;
+}
+
+
+.login_page .row{
+  margin-top: 14px;
+}
+
+
+.login_page .row input[type=text], .login_page .row input[type=password]{
   background:none;
   outline:none;
   border:0px;
-
   appearance:button;
   -moz-appearance:button; /* Firefox */
   -webkit-appearance:button; /* Safari 和 Chrome */
@@ -33,36 +27,30 @@
   -moz-box-sizing:border-box; /* Firefox */
   -webkit-box-sizing:border-box; /* Safari */;
   padding: 0;
-  width: 180px;
-  line-height: 40px;
   background-color: #FFF;
-  padding-left:5px;
-  font-size: 12px;
   flex-grow:1;
+  padding-left: 55px;
+  border-radius: 15px;
+  width: 300px;
+  line-height: 50px;
+  font-size: 22px;
 }
 
-.login_container1 .btn_getcode{
-  height:40px;
-  background-color: #3B9BEB;
-  font-size: 14px;
-  color:#FFF;
-	outline:none;
-	border:0px;
-  margin-left: 6px;
-  border: 1px solid #3B9BEB;
-}
-
-.login_container1 .button_submit{
+.login_page #btn_submit{
   flex-grow:1;
   height:40px;
   background-color: #3B9BEB;
-  font-size: 14px;
+  font-size: 22px;
   color:#FFF;
+  width: 300px;
+  height:50px;
+  border-radius: 15px;
 }
 
-.login_container1 .icon{
-  width:40px;
-  height:40px;
+.login_page .icon{
+  width:50px;
+  height:50px;
+  position:absolute;
   display:inline-flex;
   flex-direction: column;
   align-items: center;
@@ -70,33 +58,20 @@
   background-color: #F2F0F1;
   vertical-align:middle;
   border: 1px solid #E5E5E5;
-
+  border-radius: 15px 0px 0px 15px;
 }
 
-.login_container1 .ext_mail{
-  border: 1px solid #E5E5E5;
-  width:160px;
-  height:40px;
-  font-size: 14px;
-  background-color: #F2F0F1;
-  color:#757575;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.login_page .icon img{
+  width:24px;
+  height:24px;
 }
 
-#u_name{
-  width:110px;
-
+.signup{
+  font-size: 22px;
 }
 
-.login_container1 .icon img{
-  width:16px;
-  height:16px;
-}
-
-
-.login_container1 .login_title{
+.login_page .login_title{
   color:#FFF;
+  font-size: 26px;
+  text-align: center;
 }

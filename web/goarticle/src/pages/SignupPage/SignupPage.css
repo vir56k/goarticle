@@ -1,0 +1,77 @@
+.signup_page {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: center;
+}
+
+
+.signup_page .login_form{
+  padding-top:100px;
+}
+
+
+.signup_page .row{
+  margin-top: 14px;
+}
+
+
+.signup_page .row input[type=text], .signup_page .row input[type=password]{
+  background:none;
+  outline:none;
+  border:0px;
+  appearance:button;
+  -moz-appearance:button; /* Firefox */
+  -webkit-appearance:button; /* Safari 和 Chrome */
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */;
+  padding: 0;
+  background-color: #FFF;
+  flex-grow:1;
+  padding-left: 55px;
+  border-radius: 15px;
+  width: 300px;
+  line-height: 50px;
+  font-size: 22px;
+}
+
+.signup_page #btn_submit{
+  flex-grow:1;
+  height:40px;
+  background-color: #3B9BEB;
+  font-size: 22px;
+  color:#FFF;
+  width: 300px;
+  height:50px;
+  border-radius: 15px;
+}
+
+.signup_page .icon{
+  width:50px;
+  height:50px;
+  position:absolute;
+  display:inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F0F1;
+  vertical-align:middle;
+  border: 1px solid #E5E5E5;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.signup_page .icon img{
+  width:24px;
+  height:24px;
+}
+
+.btnback{
+  font-size: 22px;
+}
+
+.signup_page .login_title{
+  color:#FFF;
+  font-size: 26px;
+  text-align: center;
+}
