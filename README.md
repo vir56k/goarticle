@@ -12,6 +12,7 @@
 - 使用 go-micro 作为微服务框架
 - 使用 Protobuf 协议实现序列化
 - 使用 Docker 实现容器化，docker-compose 容器编排管理
+- 事件驱动的架构，使用 RabbitMQ 作为消息队列，当注册用户成功时发送消息，Email-service读取消息发送通知邮件
 - 使用 makefile 实现构建管理，生成docker镜像和端口映射。
 - 使用 Go Module 方式管理依赖
 - 采用 go iris 框架作为 web服务，iris 分组路由，CORS 处理跨域请求
@@ -41,15 +42,22 @@
 
 # 微服务架构
 使用 go-micro 实现微服务架构，将功能分解到各个离散的服务中以实现对解决方案的解耦，主要有：
-- article-service 文章服务，提供文章的增删改查等数据访问
-- user-service    用户服务，提供用户管理，和 token 的生成和校验
+- article-service 文章服务，提供文章的增删改查等数据访问。
+- user-service    用户服务，提供用户管理，和 token 的生成和校验。
+- user-client     用户客户端，用于访问user-service做测试验证。
 - web-app         使用 iris 实现的web应用，提供 HTTP RESTful 风格API ，供web调用。
+- email-service   消息队列，当注册用户成功时发送消息，Email-service读取消息发送通知邮件
 - sync-service    同步服务，将文章同步到第三方博客平台。（开发中）
 
 # 容器化
 使用 docker 实现容器化，简化和方便于微服务架构下的环境配置。
 编写 makefile 脚本，实现自动生成容器，和快速启动多个服务。
 docker-compose 分组管理多个镜像和依赖。
+使用 PostgreSQL 镜像，使用 RabbitMQ 镜像。
+
+# 事件驱动的架构
+事件驱动的架构，使用 RabbitMQ 作为消息队列，当注册用户成功时发送消息，Email-service读取消息发送通知邮件
+使得当用户注册完成时，无需等待 通知邮件发送完成即进行下一步任务。邮件通知微服务会异步完成发送邮件的任务。
 
 # 数据库
 使用 PostgreSQL 数据库，使用 gORM 作为数据访问框架。

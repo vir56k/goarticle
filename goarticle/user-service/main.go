@@ -5,6 +5,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/micro/go-micro"
 	"log"
+	"os"
+	"user-service/internal/mq"
 	pb "user-service/proto/user"
 )
 
@@ -29,12 +31,13 @@ func main() {
 	}
 	checkTable(db)
 
+	broker := mq.MessageBroker{URL: buildURL()}
 	// 创建数据访问对象，它包含了数据库连接
 	repo := &UserRepository{db}
 	// token 的编码和解码对象
 	tokenService := TokenService{}
 	// 装载进 handler
-	h := &handler{repo, &tokenService}
+	h := &handler{repo: repo, tokenService: &tokenService, broker: broker}
 
 	// 创建微服务
 	srv := micro.NewService(
@@ -70,4 +73,19 @@ func HandleMigrate(db *gorm.DB, models ...interface{}) error {
 		return err
 	}
 	return nil
+}
+
+func buildURL() string {
+	user := os.Getenv("MQ_USER")
+	password := os.Getenv("MQ_PASSWORD")
+	host := os.Getenv("MQ_HOST")
+	port := os.Getenv("MQ_PORT")
+	vHost := os.Getenv("MQ_VHOST")
+	//url := "amqp://admin:admin@rabbitmq:5672/"
+	s := fmt.Sprintf(
+		"amqp://%s:%s@%s:%s%s",
+		user, password, host, port, vHost,
+	)
+	log.Println("MQ连接URL=", s)
+	return s
 }

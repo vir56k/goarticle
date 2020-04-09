@@ -2,16 +2,26 @@ version: '3.1'
 
 services:
 
+  user-cli:
+    build: ./user-cli
+    environment:
+      MICRO_REGISTRY: "mdns"
+
   article-service:
     build: ./article-service
     environment:
       MICRO_REGISTRY: "mdns"
 
-  # open-service:
-  #   build: ./open-service
-  #   environment:
-  #     MICRO_REGISTRY: "mdns"
-  #
+  email-service:
+    build: ./email-service
+    environment:
+      MICRO_REGISTRY: "mdns"
+      MQ_USER: "admin"
+      MQ_PASSWORD: "admin"
+      MQ_HOST: "rabbitmq"
+      MQ_PORT: "5672"
+      MQ_VHOST: "/"
+
   web-app:
     build: ./web-app
     ports:
@@ -29,6 +39,11 @@ services:
       DB_PORT: "5432"
       DB_USER: "postgres"
       DB_PASSWORD: "postgres"
+      MQ_USER: "admin"
+      MQ_PASSWORD: "admin"
+      MQ_HOST: "rabbitmq"
+      MQ_PORT: "5672"
+      MQ_VHOST: "/"
     depends_on:
       - database
 
@@ -43,3 +58,13 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: "postgres"
+
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - 5672:5672
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=/
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin

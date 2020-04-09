@@ -2,14 +2,17 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"golang.org/x/crypto/bcrypt"
 	"log"
+	"user-service/internal/mq"
 	pb "user-service/proto/user"
 )
 
 type handler struct {
 	repo         Repository
 	tokenService *TokenService
+	broker       mq.Broker
 }
 
 // 新建用户
@@ -27,6 +30,7 @@ func (h *handler) Create(ctx context.Context, user *pb.User, resp *pb.Response) 
 	}
 	// 返回新的用户信息
 	resp.User = user
+	h.onUserCreateSuccess(user)
 	return nil
 }
 
@@ -87,4 +91,16 @@ func (h *handler) ValidateToken(ctx context.Context, token *pb.Token, resp *pb.T
 		*resp = pb.Token{Valid: true, Token: token.Token}
 	}
 	return nil
+}
+
+/**
+当创建用户成功时
+*/
+func (h *handler) onUserCreateSuccess(user *pb.User) {
+	bytes, err := json.Marshal(user)
+	if err != nil {
+		log.Println("json.Marshal error", err)
+		return
+	}
+	h.broker.Publish(string(bytes))
 }
